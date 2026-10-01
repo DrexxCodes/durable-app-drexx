@@ -1,0 +1,41 @@
+{
+  "name": "durable-user-next",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 4200",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@dicebear/collection": "latest",
+    "@dicebear/core": "latest",
+    "@dicebear/styles": "^10.6.0",
+    "@redux-devtools/extension": "latest",
+    "axios": "latest",
+    "bootstrap": "latest",
+    "flutterwave-react-v3": "latest",
+    "moment": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-calendar": "latest",
+    "react-dom": "latest",
+    "react-icons": "latest",
+    "react-idle-timer": "latest",
+    "react-paginate": "latest",
+    "react-paystack": "latest",
+    "react-redux": "latest",
+    "react-spinners": "latest",
+    "react-to-print": "latest",
+    "react-toastify": "latest",
+    "redux": "latest",
+    "redux-thunk": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19"
+  }
+}
