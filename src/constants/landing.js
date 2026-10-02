@@ -17,8 +17,8 @@ export const REASONS = [
 
 /** Copy for the scroll-inversion hero and the call-to-action section below it. */
 export const HERO_COPY = {
-  before: "Pay Less",
-  highlight: "Get More",
+  before: "Pay Less.",
+  highlight: "Get More.",
   text: "Buy data, airtime, cable and electricity in a few clicks.",
   hint: "Scroll",
 };

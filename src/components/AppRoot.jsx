@@ -13,6 +13,8 @@ import AppShell from "@/components/layout/AppShell";
 import GlobalModals from "@/components/feedback/GlobalModals";
 import InstallBanner from "@/components/pwa/InstallBanner";
 import PwaRegister from "@/components/pwa/PwaRegister";
+import PullToRefresh from "@/components/pwa/PullToRefresh";
+import Snow from "@/components/ui/Snow";
 import DevCredit from "@/components/ui/DevCredit";
 import "@/lib/pwa"; // starts listening for beforeinstallprompt immediately
 import { installHttpLayer } from "@/lib/http";
@@ -30,6 +32,8 @@ function Shell({ children }) {
     <>
       <ToastContainer autoClose={false} position="top-right" />
       <PwaRegister />
+      <PullToRefresh />
+      <Snow />
       <InstallBanner />
       {auth?.user ? (
         <AppShell>{children}</AppShell>

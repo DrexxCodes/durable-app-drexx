@@ -476,3 +476,44 @@ hr { border-color: var(--line); opacity: 1; }
 .wallet-link:hover { color: var(--brand-bright); text-decoration: underline; }
 
 .wallet-section { min-width: 0; }
+
+
+/* ==========================================================================
+   Theme colour (#c20e9c): scrollbars, refresh indicator, browser chrome
+   ========================================================================== */
+:root { --theme: #c20e9c; }
+
+/* Scrollbars everywhere (page, sidebar, modals, tables) */
+* { scrollbar-color: var(--theme) rgba(194, 14, 156, 0.08); }
+/* with scrollbar-color set, Chrome/Firefox ignore ::-webkit-scrollbar, so keep the hidden ones hidden here */
+.noScroll { scrollbar-width: none; }
+/* older Safari / WebKit without scrollbar-color */
+@supports not (scrollbar-color: auto) {
+	::-webkit-scrollbar { width: 10px; height: 10px; }
+	::-webkit-scrollbar-track { background: rgba(194, 14, 156, 0.08); }
+	::-webkit-scrollbar-thumb { background: var(--theme); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+	::-webkit-scrollbar-thumb:hover { background: #a00c82; background-clip: padding-box; }
+}
+
+/* Pull-to-refresh: turn off the browser's own overscroll refresh so ours is the only indicator */
+html, body { overscroll-behavior-y: contain; }
+
+.ptr-host {
+	position: fixed; left: 0; right: 0; z-index: 3500; display: flex; justify-content: center; pointer-events: none;
+	top: calc(env(safe-area-inset-top, 0px) + 16px); will-change: transform, opacity;
+}
+.ptr-host.is-settling { transition: transform 0.25s ease, opacity 0.2s ease; }
+.ptr-chip {
+	position: relative; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: #fff;
+	box-shadow: 0 6px 18px rgba(194, 14, 156, 0.28), 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.ptr-ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.ptr-track { fill: none; stroke: rgba(194, 14, 156, 0.16); stroke-width: 3; }
+.ptr-arc { fill: none; stroke: var(--theme); stroke-width: 3; stroke-linecap: round; }
+.ptr-logo { width: 26px; height: 26px; border-radius: 6px; object-fit: contain; }
+.ptr-chip.is-spinning .ptr-ring { animation: ptr-spin 0.9s linear infinite; }
+@keyframes ptr-spin { from { transform: rotate(-90deg); } to { transform: rotate(270deg); } }
+@media (prefers-reduced-motion: reduce) { .ptr-chip.is-spinning .ptr-ring { animation-duration: 2.4s; } }
+
+/* Full-page loader: small app image at the top, ring sweeping around it */
+.page-loader.is-branded { place-items: start center; padding-top: calc(env(safe-area-inset-top, 0px) + 16px); }

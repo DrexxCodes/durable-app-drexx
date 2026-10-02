@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from "next/image";
 import { Link } from "@/lib/router";
 import { FiCheck } from "react-icons/fi";
 
@@ -19,13 +20,11 @@ const Benefits = () => {
           <div className="benefits-image-wrapper">
             <div className="benefits-image-frame"></div>
             <div className="benefits-image">
-              <img 
-                src="https://988xx940gr.ufs.sh/f/SiVOobhIM9I8Wyo7Ogi5j9lMFAZ6sdTgSfW4tmy3n2qK1NvC" 
-                alt="Durable my boss" 
-                loading="lazy"
-                decoding="async"
-                width="640"
-                height="800"
+              <Image
+                src="https://988xx940gr.ufs.sh/f/SiVOobhIM9I8Wyo7Ogi5j9lMFAZ6sdTgSfW4tmy3n2qK1NvC"
+                alt="Durable my boss"
+                fill
+                sizes="(max-width: 768px) 80vw, 420px"
               />
             </div>
           </div>

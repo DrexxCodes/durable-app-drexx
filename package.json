@@ -26,6 +26,7 @@
     "react-paginate": "latest",
     "react-paystack": "latest",
     "react-redux": "latest",
+    "react-snowfall": "^2.4.0",
     "react-spinners": "latest",
     "react-to-print": "latest",
     "react-toastify": "latest",

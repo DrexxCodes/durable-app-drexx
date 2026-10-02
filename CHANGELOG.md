@@ -1,7 +1,7 @@
 # Changelog
 
 
-## 1.3.0 – Brand palette matched to the landing page
+## v2.0.0 – App Makeover
 
 Colours were sampled from the brand screenshot (the earlier violet `#6d28d9` was too light and blue).
 
@@ -30,7 +30,7 @@ Colours were sampled from the brand screenshot (the earlier violet `#6d28d9` was
 
 ## PWA install / launch
 
-## 1.2.0 – Login fan-out reduction
+
 
 - `src/lib/http.js` (new), installed in `AppRoot`: identical in-flight GETs now share one network request (login bootstrap +
   page effects + React StrictMode double effects). Catalog data only (settings, use-case, network, plans, categories, billers,
@@ -80,7 +80,7 @@ Colours were sampled from the brand screenshot (the earlier violet `#6d28d9` was
   - Hidden once installed / running standalone; closing the banner snoozes it for 7 days.
 - `next.config.mjs`: no-cache headers for `/sw.js`.
 
-## 1.0.0 – Next.js migration + minimalist UI makeover
+
 
 ### Framework
 - Migrated from Create React App + react-router to **Next.js (App Router)**.
