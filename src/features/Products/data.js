@@ -321,8 +321,12 @@ const MakeTransfer = ({ isOpen, back, datum }) => {
 								<p className="text-capitalize border-bottom d-flex justify-content-between printOnlyNone">
 									<span>Category: </span>
 									<span className="fontInherit Lexend">
-										{/* {buy?.name} */}
-										{buy?.name}
+										{/* buy.name is the categoryId (a key); show the renamable display name */}
+										{data?.dataToBuy?.find(
+											item =>
+												item?.category?.categoryId?.toLowerCase() ===
+												buy?.name?.toLowerCase()
+										)?.category?.name || buy?.name}
 									</span>{" "}
 								</p>
 								<p className="text-capitalize border-bottom d-flex justify-content-between printOnlyNone">
@@ -700,8 +704,12 @@ const DataList = ({ setIsBuy }) => {
 			}, {});
 			// console.log({ groups });
 			const groupArrays = Object.keys(groups).map(name => {
+				const cat = groups?.[name]?.[0]?.category;
 				return {
-					name: groups?.[name]?.[0]?.category?.categoryId?.toLowerCase(),
+					// `name` is the permanent categoryId: it only drives network matching + ordering.
+					name: cat?.categoryId?.toLowerCase(),
+					// `label` is what the admin can rename; it is what the customer reads.
+					label: cat?.name || cat?.categoryId,
 					data: groups?.[name],
 				};
 			});
@@ -763,7 +771,7 @@ const DataList = ({ setIsBuy }) => {
 								?.map((dat, ind) => (
 									<Fragment key={ind}>
 										<h6 className="text-uppercase my-3 Lexend">
-											{dat?.name?.replace(/[_]/g, " ")}
+											{(dat?.label || dat?.name)?.replace(/[_]/g, " ")}
 										</h6>
 										{dat?.data
 											?.sort((a, b) => a?.price - b?.price)

@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "@/lib/router";
 import { getNavItems } from "@/constants/navigation";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { useIdleLogout } from "@/hooks/useIdleLogout";
+import { useCatalogRefresh } from "@/hooks/useCatalogRefresh";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import BottomNav from "./BottomNav";
@@ -22,6 +23,7 @@ export default function AppShell({ children }) {
   const items = useMemo(() => getNavItems().filter(i => i.show), []);
 
   useDocumentTitle(pathname);
+  useCatalogRefresh(pathname); // admin edits reach an already-open session without a re-login
 
   // pop-up notifications for the dashboard (was done by the old header)
   useEffect(() => {

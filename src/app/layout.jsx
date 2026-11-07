@@ -26,6 +26,8 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1, // app-like: no pinch zoom (Android / Chrome honour this)
+  userScalable: false,
   viewportFit: "cover",
   themeColor: "#3c0b5b",
 };

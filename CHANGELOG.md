@@ -1,5 +1,23 @@
 # Changelog
 
+## Pinch-zoom disabled (app-like PWA feel)
+- `app/layout.jsx` viewport: `maximumScale: 1`, `userScalable: false` (Android / Chrome).
+- `styles/theme.css`: `html, body { touch-action: pan-x pan-y }`. iOS Safari ignores `user-scalable=no`, but honours
+  `touch-action`, so this is what stops pinch and double-tap zoom there. Scrolling, horizontal table scroll and the
+  pull-to-refresh gesture are unaffected.
+
+## Product pages pick up admin changes without a re-login
+
+- **Cause:** categories, networks, data plans, electricity discos, cable and education plans were fetched once at login
+  and never again, so an open session (a PWA can stay open for days) never saw admin edits.
+- `constants/catalog.js` (new): which catalogs each product page depends on (airtime, recharge cards, data, electricity,
+  cable, education, CG wallet, converter).
+- `hooks/useCatalogRefresh.js` (new), mounted in `components/layout/AppShell.jsx`: refreshes the current page's catalogs
+  when you open it and when the tab / installed app returns to the foreground or the network comes back. Throttled to one
+  refresh per loader per 45s (on top of the 30s HTTP window and the backend's 60s cache), so traffic stays tiny. A failed
+  refresh keeps what is on screen.
+- Needs the matching `durable-backend` change: the server-side cache of these lists used to survive admin edits for up to an hour.
+
 ## Landing "Tap to Install" button + install bottom sheet
 A gold **Tap to Install** (desktop: **Click to Install**) button now sits in the landing hero, above the Scroll hint. It opens a
 bottom sheet titled **Install {app name} on your {device}** (iPhone, iPad, Android phone, Android tablet, Windows PC, Mac,
